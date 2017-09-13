@@ -26,9 +26,9 @@ class Usuario extends Model
         
     }
     
-    public function funcionalidade()
+    public function permissao()
     {
-        return $this->belongsTo('App\Models\Funcionalidade', 'funcionalidade_id');
+        return $this->belongsTo('App\Models\Permissao', 'permissao_id');
         
     }
     

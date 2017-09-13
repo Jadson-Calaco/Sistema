@@ -9,7 +9,7 @@ use App\Http\Requests\Usuario\UsuarioFormRquest;
 use App\Models\Noticia;
 use App\Models\Categoria;
 use App\Models\Plano;
-use App\Models\Funcionalidade;
+use App\Models\Permissao;
 use Illuminate\Support\Facades\Input;
 use File;
 
@@ -190,11 +190,11 @@ class AdminController extends Controller
     public function editar_usuario($id){
 
        $usuario = Usuario::find($id);
-       $funcionalidades = Funcionalidade::all();
+       $permissao = Permissao::all();
        
        $planos = \DB::table('tab_plano')->where('status', 'ativo')->get();          
        
-       return view('admin.usuarios.edit_usuarios',compact('planos','funcionalidades'))->with('usuario',$usuario);
+       return view('admin.usuarios.edit_usuarios',compact('planos','permissao'))->with('usuario',$usuario);
    }
 
     public function permissao_usuario(Request $request, $id) {
@@ -227,9 +227,9 @@ class AdminController extends Controller
         $usuario->sexo = Input::get('sexo');
       }
       
-      if($usuario->funcionalidade_id!=Input::get('funcionalidade_id'))
+      if($usuario->permissao_id!=Input::get('permissao_id'))
       {
-        $usuario->funcionalidade_id = Input::get('funcionalidade_id');
+        $usuario->permissao_id = Input::get('permissao_id');
       }
       
             
