@@ -8,7 +8,7 @@ $("#materia").change(function(event){
         console.log(response);
         $("#assunto").empty();
         for(i=0;i<response.length;i++){
-            $("#assunto").append("<option value='"+response[i].id_assunto+"'>"+response[i].assunto+"</option>");
+            $("#assunto").append("<option value='"+response[i].id+"'>"+response[i].assunto+"</option>");
           }
         });
     }else{
@@ -16,7 +16,7 @@ $("#materia").change(function(event){
         console.log(response);
         $("#assunto").empty();
         for(i=0;i<response.length;i++){
-            $("#assunto").append("<option value='"+response[i].id_assunto+"'>"+response[i].assunto+"</option>");
+            $("#assunto").append("<option value='"+response[i].id+"'>"+response[i].assunto+"</option>");
           }
         });
     }

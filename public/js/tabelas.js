@@ -79,6 +79,7 @@
          
          $("a[href]").on("click",function( event){
                event.preventDefault();
+                var link=this.href;
             if(questoesSelecionadas.length!=0){
                 var test= confirm("Dejesa savar as questoes jรก selecionadas?");
                   if(test==true){
@@ -88,13 +89,14 @@
                        console.log(questoesSelecionadas);
                    
                            questoesSelecionadas=[];
+                           window.location=link;
                      });
                    }else{
                         questoesSelecionadas=[];
-                         $("a[href]").off("click"); 
+                          window.location=link; 
                    }
             }else{
-                $("a[href]").off("click");
+                window.location=link;
             }
     }); 
      } );
