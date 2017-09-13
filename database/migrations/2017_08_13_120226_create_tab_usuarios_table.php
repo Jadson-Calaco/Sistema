@@ -17,7 +17,7 @@ class CreateTabUsuariosTable extends Migration
        Schema::create('tab_usuarios', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('plano_id')->unsigned()->index();
-            $table->integer('funcionalidade_id')->unsigned()->index();
+            $table->integer('permissao_id')->unsigned()->index();
             $table->string('nome','200');
             $table->string('cpf','15');
             $table->string('sexo','10');
@@ -28,8 +28,8 @@ class CreateTabUsuariosTable extends Migration
             $table->foreign('plano_id')
                   ->references('id')->on('tab_plano');
 
-            $table->foreign('funcionalidade_id')
-                  ->references('id')->on('funcionalidades');
+            $table->foreign('permissao_id')
+                  ->references('id')->on('permissaos');
             
 
         });

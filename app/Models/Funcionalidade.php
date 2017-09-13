@@ -8,8 +8,4 @@ class Funcionalidade extends Model
 {
     protected $table = 'funcionalidades';
 
-    public function usuario(){
-        
-        return $this->hasOne('App\Models\Usuario');
-    }
 }

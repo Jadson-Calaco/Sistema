@@ -17,16 +17,16 @@
                     
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="funcionalidade"> Perfil:</label>
+                            <label for="permissao"> Permissão:</label>
                             <div class="controls">
-                                <select class="form-control" id="funcionalidade" name="funcionalidade_id">
-                                    <option>Selecione o Perfil</option>
-                                        @foreach($funcionalidades as $funcionalidades)
-                                            <option value="{{ $funcionalidades->id }}"
-                                                    @if( isset($usuario) && $usuario->funcionalidade_id == $funcionalidades->id)
+                                <select class="form-control" id="funcionalidade" name="permissao_id">
+                                    <option>Selecione o tipo de Permissão</option>
+                                        @foreach($permissao as $permissao)
+                                            <option value="{{ $permissao->id }}"
+                                                    @if( isset($usuario) && $usuario->permissao_id == $permissao->id)
                                                       selected
                                                     @endif
-                                                    > {{$funcionalidades->nome}}
+                                                    > {{$permissao->nome}}
                                             </option>
                                         @endforeach
                                 </select>

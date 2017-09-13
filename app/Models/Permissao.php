@@ -9,4 +9,9 @@ class Permissao extends Model
      //
     protected $table = 'permissaos';
     
+    public function usuario(){
+        
+        return $this->hasOne('App\Models\Usuario');
+    }
+    
 }
