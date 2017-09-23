@@ -31,8 +31,15 @@
                             <td class="center">
                                 <a href="{!! url('admin/permissao_usuario/'.$usuario->id) !!}" class="" title="Configurar" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
                                 <a href="{!! url('admin/deletar_usuario/'.$usuario->id) !!}" class="" title="Deletar " data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
+                                <a href="{!! url('admin/status_usuario/'.$usuario->id) !!}" class="" title="{{$usuario->status}}" data-toggle="tooltip" data-placement="top">
 
-                            </td>
+                                    @if($usuario->status=='ativo')
+                                    <i class="fa fa-1x fa-fw fa-star"></i>
+                                    @else
+                                    <i class="fa fa-1x fa-fw fa-star-o"></i>
+                                    @endif
+
+                                </a>
                         </tr>
                         @endforeach
                     </tbody>

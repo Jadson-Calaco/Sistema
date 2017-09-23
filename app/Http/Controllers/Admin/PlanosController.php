@@ -141,5 +141,22 @@ class PlanosController extends Controller {
          return redirect('admin/planos')->with('message','Cadastro Excluido com sucesso');
  
     }
+    
+    public function mudarStatus($id)
+    {
+      $planos = Plano::find($id);
+      
+      if($planos->status == 'inativo')
+      {
+        $planos->status = 'ativo';
+      }else{
+        $planos->status = 'inativo';
+      }
+      
+      $planos->save();
+       
+      \Session::flash('message', 'Status atualizado com sucesso!');
+      return redirect('admin/planos');
+    }
 
 }

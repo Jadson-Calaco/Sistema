@@ -179,6 +179,23 @@ class AdminController extends Controller
       \Session::flash('message', 'Noticia excluida com sucesso!');
       return redirect('admin/noticias');
     }
+    
+    public function mudarStatus($id)
+    {
+      $noticia = Noticia::find($id);
+      
+      if($noticia->status == 'inativo')
+      {
+        $noticia->status = 'ativo';
+      }else{
+        $noticia->status = 'inativo';
+      }
+      
+      $noticia->save();
+       
+      \Session::flash('message', 'Status atualizado com sucesso!');
+      return redirect('admin/noticias');
+    }
 
     // CRUD DE USUARIO NO ADMIN
     
@@ -261,7 +278,22 @@ class AdminController extends Controller
       return redirect('admin/usuarios');
     }
     
-     
+    public function mudarStatusUsuario($id)
+    {
+      $usuario = Usuario::find($id);
+      
+      if($usuario->status == 'inativo')
+      {
+        $usuario->status = 'ativo';
+      }else{
+        $usuario->status = 'inativo';
+      }
+      
+      $usuario->save();
+       
+      \Session::flash('message', 'Status atualizado com sucesso!');
+       return redirect('admin/usuarios');
+    }
     /*
     public function show($id)
     {

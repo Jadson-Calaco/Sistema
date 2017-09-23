@@ -38,12 +38,14 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function() {
     Route::get('/permissao_usuario/{id}','AdminController@editar_usuario');
     Route::post('/permissao_usuario/{id}','AdminController@permissao_usuario');
     Route::get('/deletar_usuario/{id}','AdminController@destroy_usuario');
+    Route::get('/status_usuario/{id}','AdminController@mudarStatusUsuario');
     
     Route::get('/noticias','AdminController@noticia');
     Route::post('/criar_noticia','AdminController@criar_noticia');
     Route::get('/editar_noticia/{id}','AdminController@editar_noticia');
     Route::post('/editar_noticia/{id}','AdminController@update');
     Route::get('/deletar_noticia/{id}','AdminController@destroy');
+    Route::get('/status_noticia/{id}','AdminController@mudarStatus');
    // Route::get('/admin/index_noticia','AdminController@index_noticia');
     
     /*dados atulizados por silvano-leonsil 
@@ -60,6 +62,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function() {
     Route::get('/editar_plano/{id}','PlanosController@edit');
     Route::get('/destroy/{id}','PlanosController@destroy');
     Route::post('/update/{id}','PlanosController@update');
+    Route::get('/status_plano/{id}','PlanosController@mudarStatus');
 	
 	//dados das questoes,
     Route::get('/questoes','QuestaoController@index');

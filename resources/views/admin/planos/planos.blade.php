@@ -7,7 +7,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">Gerenciando Planos</h3>
     </div>
-    
+
     <div class="panel-body">
         <div class="section">   
             <div class="col-md-2">
@@ -80,8 +80,15 @@
                             <td class="center">
                                 <a href="{!! url('admin/editar_plano/'.$dados->id) !!}" class="" title="Editar Cadastro" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-pencil"></i></a>
                                 <a href="{!! url('admin/destroy/'.$dados->id) !!}" class="" title="Deletar Cadastro" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-trash"></i></a>
-                                <a href="{!! url('admin/update_q/'.$dados->id) !!}" class="" title="{{$status or 'Ativa/Desativar'}}" data-toggle="tooltip" data-placement="top"><i class="fa fa-1x fa-fw fa-star-o"></i></a>
-                            </td>
+                                <a href="{!! url('admin/status_plano/'.$dados->id) !!}" class="" title="{{$dados->status}}" data-toggle="tooltip" data-placement="top">
+
+                                    @if($dados->status=='ativo')
+                                    <i class="fa fa-1x fa-fw fa-star"></i>
+                                    @else
+                                    <i class="fa fa-1x fa-fw fa-star-o"></i>
+                                    @endif
+
+                                </a>
                         </tr>
                         @endforeach
                     </tbody>
