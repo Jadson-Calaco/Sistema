@@ -5,6 +5,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">Gerenciando Noticias</h3>
     </div>
+    
     <div class="panel-body">
         <div class="section">   
             <div class="col-md-2">
