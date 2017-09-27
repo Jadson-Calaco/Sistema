@@ -3,7 +3,7 @@
 @section('conteudo')
 
  
-<form id="submeterPdf" method="post" action="{{url('pdf')}}">
+<form>
         <input  type="hidden" name="_token" value="{{csrf_token()}}" >      
     <table id="questoes" class="table table-hover" cellspacing="0" width="100%" >
         <thead>
@@ -26,8 +26,10 @@
     </table>
    
     <br>
-    <input type="submit" id="botao2" value="Imprimir"  class="btn btn-primary" />
+    <button  type="button" id="botao2" class="btn btn-primary" >Gerar pdf</button>
 </form>    
+
+
 
 @endsection
 

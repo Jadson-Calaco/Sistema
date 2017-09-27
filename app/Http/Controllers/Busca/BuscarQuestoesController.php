@@ -15,6 +15,8 @@ class BuscarQuestoesController extends Controller
 {
     private  $materia;
     private  $questoes;
+    //protected $questoesPdf;
+    //protected $tamanhoQuestoesPdf;
     private  $questoesSelecionadas; 
 
     public function _construct(Materia $materia, Questoes $questoes){
@@ -52,26 +54,25 @@ class BuscarQuestoesController extends Controller
          
    }
    
-   public function gerarPdf(Request $request){
+   public function guardarDadosPdf(Request $request){
      
-    
-       
-        $questoes=$request->input('questoesPraEnviar'); 
-        $tamanho= sizeof($questoes);
-    
-        
+          $dq=$request->input('questoesPraEnviar');
+          $tm=sizeof($dq);
+        $request->session()->put('questoesPdf', $dq);
+        $request->session()->put('tamanho', $tm);
    
-       /*    return PDF::load(View::make('site.questoes.pdfimpresso')
-                 ->with('tamanho',$tamanho)
-                 ->with('questoes',$questoes))->download('my_pdf');
-       */
-     /*   
-      return View::make('site.questoes.pdfimpresso')
-                 ->with('tamanho',$tamanho)
-                 ->with('questoes',$questoes);
-      */  
-        return view('site.questoes.pdfimpresso', compact('questoes','tamanho'));
+       $link='gerarPdf';
+       return $link ;
+   }
+   
+   public function gerarPdf(Request $request){
+      $value1 = $request->session()->get('questoesPdf');
+      $value2 = $request->session()->get('tamanho');
       
+      
+       return PDF::load(View::make('site.questoes.pdfimpresso')
+                 ->with('tamanho', $value2)
+                 ->with('questoes', $value1))->download('my_pdf');
    }
 
     public function salvarQuestao(Request $request){

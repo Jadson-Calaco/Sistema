@@ -109,6 +109,7 @@ Route::group(['namespace' => 'Busca'], function() {
     Route::any('pdf',['as'=>'pdf','uses'=>'BuscarQuestoesController@gerarPdf']);
     Route::any('salvarquestoesselecionadas',['as'=>'salvaqquestoes','uses'=>'BuscarQuestoesController@salvarQuestao']);
     Route::any('simulado','BuscarQuestoesController@mostrarSimulado');
+     Route::any('gerarPdf','BuscarQuestoesController@gerarPdf');
     //Route::any('questoesss','BuscarQuestoesController@getQuestoes');
     
    Route::get('teste',function(){

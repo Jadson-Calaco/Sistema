@@ -11,12 +11,12 @@
         <tbody>
             
                 @for($i=0;$i<$tamanho;$i++)
-                 // @for($j=0;$j<1;$j++)
+                  @for($j=0;$j<1;$j++)
                 
              <tr>
                <td style="border-style: solid;"> {{$questoes[$i][$j]}}</td>
              </tr>
-                // @endfor
+                 @endfor
                @endfor
                     
         </tbody>                 
