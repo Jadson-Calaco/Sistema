@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
+        <meta name="_token" content="{!! csrf_token() !!}"/>
         <title>MetaEduca</title>
         <link href="{{url('assets/site/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 
@@ -31,7 +32,10 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+        <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="  https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="wrapper">
@@ -147,7 +151,7 @@
                                         <a href="{{ url('/admin/usuarios')}}"><i class="fa fa-1x fa-fw fa-user-plus"></i>Usuarios</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/admin/questoes')}}"><i class="fa fa-1x fa-edit fa-fw"></i>Adicionar Questões</a>
+                                        <a  href="{{url('/admin/questoes')}}"><i class="fa fa-1x fa-edit fa-fw"></i>Adicionar Questões</a>
                                     </li>
 									<li>
                                         <a href="disciplinas"><i class="fa fa-1x fa-edit fa-fw"></i>Adicionar Disciplinas</a>
@@ -165,7 +169,12 @@
                                 <a href="{{url('/admin/planos')}}"><i class="fa fa-2x fa-fw fa-shirtsinbulk"></i>Planos</a>
                             </li>
                             <li>
-                                <a href="criar_provas"><i class="fa fa-2x fa-fw fa-file"></i>Criar provas</a>
+                                <a href="{{url('/admin/buscarquestoes')}}"><i class="fa fa-2x fa-fw fa-file"></i>Criar provas </a>
+                                  
+                            <li>
+                                <a href="{{url('/admin/simulado')}}"><i class="fa fa-2x fa-fw fa-file"></i>Simulado</a>
+                            </li>        
+                                    
                             </li>
                             <li>
                                 <a href="{{url('admin/clientes')}}"><i class="fa fa-2x fa-fw fa-group"></i>Clientes</a>
@@ -350,7 +359,12 @@
 		<script type="text/javascript" src="{{url('js/selectdinamico.js')}}"></script>
         <script type="text/javascript" src="{{url('js/tabelas.js')}}"></script> 																		
         <!-- Page-Level Demo Scripts - Tables - Use for reference-->
-        <script>
+        
+        <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script src=" https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
+        <script type="text/javascript" src="public/js/selectdinamico.js"></script>
+       <script type="text/javascript" src="public/js/tabelas.js"></script> 
+       <script>
 $(document).ready(function () {
     $('#dataTables-example').DataTable({
         responsive: true

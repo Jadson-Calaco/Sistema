@@ -1,8 +1,8 @@
-@extends('site.template.templateQuestao')
+@extends('admin.templates.templateAdmin')
 
 @section('conteudo')
 
-<form id="submeter" method="post" action="{{url('questoesencontradas')}}"> 
+<form id="submeter" method="post" action="{{url('admin/questoesencontradas')}}"> 
              <input  type="hidden" name="_token" value="{{csrf_token()}}" >        
      
     <fieldset>

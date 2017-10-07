@@ -4,6 +4,7 @@
         });
   $(document).ready(function() {
       $('#botao2').hide();
+       $('#botao3').hide(); 
       var questoesSelecionadas=[];
       var table = $('#questoes').DataTable({
                  select:'multi',
@@ -13,6 +14,7 @@
           $('#questoes tbody').on( 'click', 'tr', function () {
               var quest=table.row( this ).data();
               $('#botao2').show();
+               $('#botao3').show();
               
                 if(questoesSelecionadas.length==0){
                     questoesSelecionadas.push(quest);
@@ -36,12 +38,21 @@
               
                   if(questoesSelecionadas.length==0){
                     $('#botao2').hide(); 
+                    $('#botao3').hide(); 
                   }
               
        });
        $('#botao2').on("click",function(event ){
            // event.preventDefault();
-           $.post("/pdf", {questoesPraEnviar:questoesSelecionadas}, function(data){
+           $.post("pdf", {questoesPraEnviar:questoesSelecionadas}, function(data){
+
+                       console.log(data);
+                        window.location=data;
+           });
+       });
+        $('#botao3').on("click",function(event ){
+           // event.preventDefault();
+           $.post("world", {questoesPraEnviar:questoesSelecionadas}, function(data){
 
                        console.log(data);
                         window.location=data;
@@ -55,7 +66,7 @@
               if(questoesSelecionadas.length!=0){
                  var test= confirm("Dejesa salvar as questoes já selecionadas?");
                     if(test==true){
-                      $.post("/salvarquestoesselecionadas", {questoess:questoesSelecionadas}, function()
+                      $.post("salvarquestoesselecionadas", {questoess:questoesSelecionadas}, function()
                       {
                        console.log(questoesSelecionadas);
                            questoesSelecionadas=[];

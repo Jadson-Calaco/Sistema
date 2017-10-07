@@ -1,9 +1,9 @@
-@extends('site.template.templateQuestao')
+@extends('admin.templates.templateAdmin')
 
 @section('conteudo')
 
  
-<form>
+<form id="submeterQuestoes"  method="post">
         <input  type="hidden" name="_token" value="{{csrf_token()}}" >      
     <table id="questoes" class="table table-hover" cellspacing="0" width="100%" >
         <thead>
@@ -27,6 +27,7 @@
    
     <br>
     <button  type="button" id="botao2" class="btn btn-primary" >Gerar pdf</button>
+    <button  type="button" id="botao3" class="btn btn-primary" >Gerar world</button>
 </form>    
 
 

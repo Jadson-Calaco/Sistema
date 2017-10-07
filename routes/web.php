@@ -85,6 +85,18 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function() {
     Route::get('/edit_assunto/{id}','AssuntoController@edit');
     Route::post('/update_assunto/{id}','AssuntoController@update');
     Route::get('/destroy_assunto/{id}','AssuntoController@destroy');
+    
+    Route::any('/questoesencontradas', 'BuscarQuestoesController@getQuestoes');
+    Route::any('/buscarquestoes', 'BuscarQuestoesController@trazerMaterias');
+    Route::any('/questoes', 'BuscarQuestoesController@trazerMaterias');
+    Route::get('/assuntos/{id}','BuscarQuestoesController@getAssuntos' );
+    Route::get('/assuntoss/{idmateria}/{serie}','BuscarQuestoesController@getAssuntosPorSerieEMateria' );
+    Route::any('/pdf','BuscarQuestoesController@guardarDadosPdf');
+    Route::any('/salvarquestoesselecionadas',['as'=>'salvaqquestoes','uses'=>'BuscarQuestoesController@salvarQuestao']);
+    Route::any('/simulado','BuscarQuestoesController@mostrarSimulado');
+    Route::any('/gerarPdf','BuscarQuestoesController@gerarPdf');
+    Route::any('/world','BuscarQuestoesController@guardarDadosWorld');
+    Route::any('/gerarWorld','BuscarQuestoesController@gerarWorld');
         
 });
 Route::group(['namespace' => 'Usuario'], function() {
@@ -99,25 +111,25 @@ Route::group(['namespace' => 'Usuario'], function() {
   //Route::resource('/admin/usuarios','UsuarioController');
          
 });
-
-Route::group(['namespace' => 'Busca'], function() {
+/*
+Route::group(['namespace' => 'Busca','middleware'=>'auth'], function() {
+   
     Route::any('questoesencontradas', 'BuscarQuestoesController@getQuestoes');
     Route::any('buscarquestoes', 'BuscarQuestoesController@trazerMaterias');
     Route::any('questoes', 'BuscarQuestoesController@trazerMaterias');
     Route::get('assuntos/{id}','BuscarQuestoesController@getAssuntos' );
     Route::get('assuntoss/{idmateria}/{serie}','BuscarQuestoesController@getAssuntosPorSerieEMateria' );
-    Route::any('pdf',['as'=>'pdf','uses'=>'BuscarQuestoesController@gerarPdf']);
+    Route::any('pdf',['as'=>'pdf','uses'=>'BuscarQuestoesController@guardarDadosPdf']);
     Route::any('salvarquestoesselecionadas',['as'=>'salvaqquestoes','uses'=>'BuscarQuestoesController@salvarQuestao']);
     Route::any('simulado','BuscarQuestoesController@mostrarSimulado');
-     Route::any('gerarPdf','BuscarQuestoesController@gerarPdf');
-    //Route::any('questoesss','BuscarQuestoesController@getQuestoes');
+    Route::any('gerarPdf','BuscarQuestoesController@gerarPdf');
+    Route::any('world',['as'=>'world','uses'=>'BuscarQuestoesController@guardarDadosWorld']);
+    Route::any('gerarWorld','BuscarQuestoesController@gerarWorld');
     
-   Route::get('teste',function(){
-      
-       return view('site.questoes.teste');
-   });
+    
+   
 });
-
+*/
 Route::get('error',function (){ 
    return response()->view('error.404', [], 404);
 });

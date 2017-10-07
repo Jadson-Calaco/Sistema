@@ -1,9 +1,9 @@
-@extends('site.template.templateQuestao')
+@extends('admin.templates.templateAdmin')
 
 @section('conteudo')
 
- 
- <table id="questoes" class="table table-striped table-bordered" cellspacing="0" width="100%" >
+ @if($tamanho!=0)
+ <table id="questoes"  class="table table-hover" cellspacing="0" width="100%" >
         <thead>
             <tr>
                 <th>  Questoes   </th>
@@ -12,18 +12,24 @@
         <tbody>
             
                 @for($i=0;$i<$tamanho;$i++)
-                  @for($j=0;$j<1;$j++)
+                  
                 
              <tr>
-               <td style="border-style: solid;"> {{$questoesSimulado[$i][$j]}}</td>
+               <td style="border-style: solid;"> {{$questoesSimulado[$i]}}</td>
              </tr>
-                 @endfor
+              
                @endfor
                     
         </tbody>                 
         
     </table>
-   
+ @else
+ <p><b>Busque e selecione as questões antes de criar o simulado</b></p>
+ @endif
+ 
+<br>
+    <button  type="button" id="botao2" class="btn btn-primary" >Gerar pdf</button>
+    <button  type="button" id="botao3" class="btn btn-primary" >Gerar world</button>
   
 
 @endsection
