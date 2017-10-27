@@ -15,7 +15,7 @@ class CreateTabEnderecoTable extends Migration
             $table->string('logradouro','30');
             $table->string('numero','5');
             $table->string('bairro','30');
-            $table->string('complemento','30');
+            $table->string('complemento','30')->nullable();
             $table->string('cep','15');
             $table->string('cidade','30');
             $table->string('uf','30');

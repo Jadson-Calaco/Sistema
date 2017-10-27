@@ -541,9 +541,10 @@
                 <p>Cadastre-se para receber ofertas exclusivas e lançamentos do nosso site.</p>
             </div>
             <div class="span7">
-                <form class="inline-form">
+                <form class="inline-form" method="post" action="{{ url('/emailNoticias')}}">
+                    {!!csrf_field()!!}
                     <input type="email" name="email" id="nlmail" class="span8" placeholder="Digite seu email" required />
-                    <button id="subscribe" class="button button-sp">Inscreva-se</button>
+                    <button id="btemail" class="button button-sp">Inscreva-se</button>
                 </form>
                 <div id="err-subscribe" class="error centered">Forneça um endereço de e-mail válido.</div>
             </div>
@@ -569,7 +570,8 @@
                         <div id="successSend" class="alert alert-success invisible">
                             <strong>Sua mensagem foi enviada.</strong></div>
                         <div id="errorSend" class="alert alert-error invisible">Ocorreu um erro</div>
-                        <form id="contact-form" action="php/mail.php">
+                        <form id="contact-form" method="post" action="{{ url('/emailDuvidas')}}">
+                            {!!csrf_field()!!}
                             <div class="control-group">
                                 <div class="controls">
                                     <input class="span12" type="text" id="name" name="name" placeholder="* Seu nome..." />
@@ -590,7 +592,7 @@
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <button id="send-mail" class="message-btn">Enviar mensagem</button>
+                                    <button id="btemailDuvidas" class="message-btn">Enviar mensagem</button>
                                 </div>
                             </div>
                         </form>

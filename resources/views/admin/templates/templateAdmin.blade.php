@@ -109,7 +109,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                 <a href="{!! url('admin/editar_perfil/'.auth()->user()->id) !!}"><i class="fa fa-user fa-fw"></i> Perfil</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
@@ -153,10 +153,10 @@
                                     <li>
                                         <a  href="{{url('/admin/questoes')}}"><i class="fa fa-1x fa-edit fa-fw"></i>Adicionar Questões</a>
                                     </li>
-									<li>
+                                    <li>
                                         <a href="disciplinas"><i class="fa fa-1x fa-edit fa-fw"></i>Adicionar Disciplinas</a>
                                     </li>
-									<li>
+                                    <li>
                                         <a href="assuntos"><i class="fa fa-1x fa-edit fa-fw"></i>Adicionar Assunto</a>
                                     </li>
                                     <!--li>
@@ -183,7 +183,7 @@
                                 <a href="{{url('/admin/parceiros')}}"><i class="fa fa-2x fa-fw fa-linux"></i>Parceiros</a>
                             </li>
                             <li>
-							    <a href="controle"><i class="fa fa-2x fa-fw fa-cog"></i>Permissões</a>
+                                <a href="controle"><i class="fa fa-2x fa-fw fa-cog"></i>Permissões</a>
                             </li>
                             <li>													   						
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Ver Estatisticas<span class="fa arrow"></span></a>
@@ -220,10 +220,10 @@
                     <div class="col-lg-12">
                         <br>
                         @if( Session::has('message') )
-                            <div class="alert alert-success">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close"> ×</a>
-                                {{ Session::get('message') }}
-                            </div>
+                        <div class="alert alert-success">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close"> ×</a>
+                            {{ Session::get('message') }}
+                        </div>
                         @endif
 
                         <h1 class="page-header">{{$pagina or 'Painel de Controle'}}</h1>
@@ -356,23 +356,24 @@
         <!-- Custom Theme JavaScript-->
         <script src="{{url('assets/site/dist/js/sb-admin-2.js')}}" type="text/javascript"></script>
 
-		<script type="text/javascript" src="{{url('js/selectdinamico.js')}}"></script>
+        <script type="text/javascript" src="{{url('js/selectdinamico.js')}}"></script>
         <script type="text/javascript" src="{{url('js/tabelas.js')}}"></script> 																		
         <!-- Page-Level Demo Scripts - Tables - Use for reference-->
         
         <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
         <script src=" https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
         <script type="text/javascript" src="public/js/selectdinamico.js"></script>
-       <script type="text/javascript" src="public/js/tabelas.js"></script> 
-       <script>
-$(document).ready(function () {
-    $('#dataTables-example').DataTable({
-        responsive: true
-    });
-});
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
+        <script type="text/javascript" src="public/js/tabelas.js"></script>
+        
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         </script>
 
     </body>

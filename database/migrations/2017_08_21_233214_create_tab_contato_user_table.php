@@ -18,9 +18,9 @@ class CreateTabContatoUserTable extends Migration
             $table->increments('id');
             $table->integer('usuario_id')->unsigned()->index();
             $table->string('email','50')->unique();
-            $table->string('celular','10');
+            $table->string('celular','10')->nullable();
             $table->string('telefone','10');
-            $table->string('obs','200');
+            $table->string('obs','200')->nullable();
             $table->timestamps();
 
             $table->foreign('usuario_id')

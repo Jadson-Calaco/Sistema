@@ -9,6 +9,8 @@ use App\Models\Endereco;
 use App\Models\Contato;
 use App\Models\Noticia;
 use App\Http\Requests\Usuario\UsuarioFormRquest;
+use App\Models\EmailNoticias;
+use App\Models\EmailDuvidas;
 
 class UsuarioController extends Controller {
 
@@ -199,6 +201,57 @@ class UsuarioController extends Controller {
       \Session::flash('message', 'Usuário atualizado com sucesso!');
       return redirect('site.home.index');
 
+    }
+    
+    // EMAIL NOTICIAS
+
+    public function emailNoticias(Request $request) {
+
+        $this->validate($request, [
+            'email' => 'required',
+        ]);
+
+        $emailNoticia = new EmailNoticias;
+        $emailNoticia->email = $request->email;
+       
+        $emailNoticia->save();
+
+        return redirect('/index');
+                                           
+    }
+
+    // EMAIL DUVIDAS
+    public function emailDuvidas(Request $request) {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'comment' => 'required',
+        ]);
+
+        $name = $request->name;
+        $email = $request->email;
+        $comment = $request->comment;
+
+        $message = "NOME: $name<br>
+                    EMAIL: $email<br>
+                    COMENTARIO: $comment";
+
+        dd($message);
+
+        /*
+          $headers = "MIME-Version: 1.0" . "\r\n";
+          $headers .= "Content-type:text/html; charset=utf-8" . "\r\n";
+          $headers .= "From: <$emailFrom>" . "\r\n";
+          $headers .= "Reply-To: <$email>" . "\r\n";
+
+          $assunto=" Duvidas - MetaEduca";
+          $email_to = "";
+
+          $status = mail($email_to, $assunto, $message, $headers);
+         */
+
+         return redirect('/index');
     }
   
 
