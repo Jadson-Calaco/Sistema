@@ -294,6 +294,104 @@ class AdminController extends Controller
       \Session::flash('message', 'Status atualizado com sucesso!');
        return redirect('admin/usuarios');
     }
+    
+    public function editar_perfil($id) {
+
+        $user = User::find($id);
+     
+        $user2 = $user->usuario->id;
+      
+        $usuario = Usuario::find($user2);
+        
+        return view('admin.usuarios.edit_perfil_usuarios')->with('usuario', $usuario);
+    }
+
+    public function update_perfil(Request $request, $id) {
+
+       
+        $usuario = Usuario::find($id);
+       
+        
+        if ($usuario->nome != Input::get('nome')) {
+            $usuario->nome = Input::get('nome');
+        }
+
+        if ($usuario->cpf != Input::get('cpf')) {
+            $usuario->cpf = Input::get('cpf');
+        }
+
+        if ($usuario->plano_id != Input::get('plano_id')) {
+            $usuario->plano_id = Input::get('plano_id');
+        }
+
+        if ($usuario->data_nasc != Input::get('data_nasc')) {
+            $usuario->data_nasc = Input::get('data_nasc');
+        }
+
+        if ($usuario->sexo != Input::get('sexo')) {
+            $usuario->sexo = Input::get('sexo');
+        }
+
+        $end = $usuario->endereco->id;
+        $endereco = Endereco::find($end);
+        
+
+        if ($endereco->logradouro != Input::get('logradouro')) {
+            $endereco->logradouro = Input::get('logradouro');
+        }
+
+        if ($endereco->numero != Input::get('numero')) {
+            $endereco->numero = Input::get('numero');
+        }
+
+        if ($endereco->bairro != Input::get('bairro')) {
+            $endereco->bairro = Input::get('bairro');
+        }
+
+        if ($endereco->complemento != Input::get('complemento')) {
+            $endereco->complemento = Input::get('complemento');
+        }
+
+        if ($endereco->cep != Input::get('cep')) {
+            $endereco->cep = Input::get('cep');
+        }
+
+        if ($endereco->cidade != Input::get('cidade')) {
+            $endereco->cidade = Input::get('cidade');
+        }
+
+        if ($endereco->uf != Input::get('uf')) {
+            $endereco->uf = Input::get('uf');
+        }
+
+        $con = $usuario->contato->first()->id;
+        $contato = Contato::find($con);
+        
+
+        if ($contato->email != Input::get('email')) {
+            $contato->email = Input::get('email');
+        }
+
+        if ($contato->telefone != Input::get('telefone')) {
+            $contato->telefone = Input::get('telefone');
+        }
+
+        if ($contato->celular != Input::get('celular')) {
+            $contato->celular = Input::get('celular');
+        }
+
+        if ($contato->obs != Input::get('obs')) {
+            $contato->obs = Input::get('obs');
+        }
+
+        $contato->save();
+        $endereco->save();
+        $usuario->save();
+       
+        \Session::flash('message', 'Dados atualizado com sucesso!');
+       return redirect('admin/admin');
+    }
+
     /*
     public function show($id)
     {
